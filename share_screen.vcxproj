@@ -102,21 +102,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="app_controller.cpp" />
-    <ClCompile Include="tray_menu.cpp" />
-    <QtRcc Include="share_screen.qrc" />
-    <QtUic Include="share_screen.ui" />
-    <QtMoc Include="share_screen.h" />
-    <ClCompile Include="Screen.cpp" />
-    <ClCompile Include="screen_manager.cpp" />
-    <ClCompile Include="share_screen.cpp" />
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="src\app_controller.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Screen.cpp" />
+    <ClCompile Include="src\screen_detector\screen_detector_windows.cpp" />
+    <ClCompile Include="src\screen_manager.cpp" />
+    <ClCompile Include="src\share_screen.cpp" />
+    <ClCompile Include="src\tray_menu.cpp" />
+    <QtRcc Include="src\share_screen.qrc" />
+    <QtUic Include="src\share_screen.ui" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="app_controller.h" />
-    <ClInclude Include="Screen.h" />
-    <ClInclude Include="screen_manager.h" />
-    <QtMoc Include="tray_menu.h" />
+    <ClInclude Include="src\app_controller.h" />
+    <ClInclude Include="src\Screen.h" />
+    <ClInclude Include="src\screen_detector\screen_detector.h" />
+    <ClInclude Include="src\screen_manager.h" />
+    <QtMoc Include="src\share_screen.h" />
+    <QtMoc Include="src\tray_menu.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

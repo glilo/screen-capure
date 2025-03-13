@@ -62,3 +62,5 @@ share_screen/x64/Debug/share_screen.tlog/uic.write.1u.tlog
 .vs/share_screen/v17/ipch/AutoPCH/c933d4a2df903298/TRAYMENU.ipch
 .vs/share_screen/v17/ipch/AutoPCH/d6a539de4d31f8cd/TRAY_MENU.ipch
 .vs/share_screen/v17/ipch/AutoPCH/e20043fcfe23217/SCREEN.ipch
+deps/
+.vs/

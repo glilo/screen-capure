@@ -1,5 +1,5 @@
 <RCC>
     <qresource prefix="/share_screen">
-        <file>resource/img/image.ico</file>
+        <file>../resource/img/image.ico</file>
     </qresource>
 </RCC>
