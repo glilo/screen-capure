@@ -43,7 +43,7 @@ static void detectScreensWindows(std::vector<Screen>& screens) {
 
         // Extraer datos del monitor
         std::string name = wideCharToString(monitorInfo.szDevice);
-        if (name.find("\\\\.\\") == 0) name = name.substr(4);
+        //if (name.find("\\\\.\\") == 0) name = name.substr(4);
         qDebug() << "Dispositivo: " << name;
         int id = static_cast<int>(screens->size());
         std::string resolution = std::to_string(monitorInfo.rcMonitor.right - monitorInfo.rcMonitor.left) +

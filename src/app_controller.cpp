@@ -2,10 +2,11 @@
 
 AppController::AppController() {
     trayMenu = new TrayMenu();
+    screenController = new ScreenController();
 }
 
 void AppController::run() {
     // Detectar pantallas y construir el menú
-    auto screens = ScreenManager::detectScreens();
-    trayMenu->buildMenu(screens);
+    screenController->detectScreens();
+    trayMenu->buildMenu(screenController);
 }

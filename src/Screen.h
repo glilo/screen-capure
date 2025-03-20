@@ -2,12 +2,16 @@
 #define SCREEN_H
 
 #include <string>
+#include "./screen_capture_thread.h"
 
 
 class Screen {
 public:
+    bool isCapturing = false;
+    ScreenCaptureThread* captureThread = nullptr;
     // Constructor
     Screen(int id, const std::string& name, const std::string& resolution, const std::string& nameId, const std::string& xPos, const std::string& yPos);
+    ~Screen();
 
     // Getters
     int getId() const;
@@ -19,6 +23,10 @@ public:
 
     //Setters
     void setName(const std::string& newName);
+
+    void startCapture();
+    void stopCapture();
+
 
 
 

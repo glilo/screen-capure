@@ -105,6 +105,8 @@
     <ClCompile Include="src\app_controller.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Screen.cpp" />
+    <ClCompile Include="src\screen_capture_thread.cpp" />
+    <ClCompile Include="src\screen_controller.cpp" />
     <ClCompile Include="src\screen_detector\screen_detector_windows.cpp" />
     <ClCompile Include="src\screen_manager.cpp" />
     <ClCompile Include="src\share_screen.cpp" />
@@ -115,6 +117,8 @@
   <ItemGroup>
     <ClInclude Include="src\app_controller.h" />
     <ClInclude Include="src\Screen.h" />
+    <QtMoc Include="src\screen_capture_thread.h" />
+    <ClInclude Include="src\screen_controller.h" />
     <ClInclude Include="src\screen_detector\screen_detector.h" />
     <ClInclude Include="src\screen_manager.h" />
     <QtMoc Include="src\share_screen.h" />

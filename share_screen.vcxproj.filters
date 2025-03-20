@@ -49,6 +49,12 @@
     <ClCompile Include="src\screen_detector\screen_detector_windows.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\screen_capture_thread.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\screen_controller.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\app_controller.h">
@@ -63,6 +69,9 @@
     <ClInclude Include="src\screen_detector\screen_detector.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\screen_controller.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="src\share_screen.ui">
@@ -71,6 +80,9 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="src\share_screen.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="src\screen_capture_thread.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="src\tray_menu.h">

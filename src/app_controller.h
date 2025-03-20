@@ -1,8 +1,8 @@
 #ifndef APP_CONTROLLER_H
 #define APP_CONTROLLER_H
 
-#include "screen_manager.h"
 #include "tray_menu.h"
+#include "screen_controller.h"
 
 class AppController {
 public:
@@ -11,6 +11,7 @@ public:
 
 private:
     TrayMenu* trayMenu;
+    ScreenController* screenController;
 };
 
 #endif // APP_CONTROLLER_H

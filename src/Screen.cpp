@@ -8,6 +8,11 @@
 Screen::Screen(int id, const std::string& name, const std::string& resolution, const std::string& nameId, const std::string& xPos, const std::string& yPos)
     : id(id), name(name), resolution(resolution), nameId(nameId), xPos(xPos), yPos(yPos) {}
 
+Screen::~Screen()
+{
+    stopCapture();
+}
+
 
 // Getters
 int Screen::getId() const {
@@ -40,5 +45,26 @@ const std::string& Screen::getyPos() const
 void Screen::setName(const std::string& newName)
 {
     name = newName;
+}
+
+void Screen::startCapture()
+{
+    if (isCapturing) return;
+    captureThread = new ScreenCaptureThread(resolution, xPos, yPos);
+    captureThread->start();
+    isCapturing = true;
+}
+
+void Screen::stopCapture()
+{
+    if (captureThread) {
+        captureThread->stopCapture();
+        if (captureThread != nullptr) {
+            captureThread->wait();
+            delete captureThread;
+            captureThread = nullptr;
+        }
+    }
+    isCapturing = false;
 }
 

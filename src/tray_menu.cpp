@@ -27,9 +27,9 @@ void TrayMenu::initializeTrayIcon() {
     trayIcon.show();
 }
 
-void TrayMenu::buildMenu(const std::vector<Screen>& screens) {
+void TrayMenu::buildMenu(ScreenController* screenController) {
     // Crear menús dinámicamente para las pantallas detectadas
-    for (const auto& screen : screens) {
+    for (auto &screen : screenController->getScreens()) {
         QMenu* screenSubMenu = new QMenu(QString::fromStdString(screen.getName()), this);
 
         // Añadir resolución
@@ -38,19 +38,49 @@ void TrayMenu::buildMenu(const std::vector<Screen>& screens) {
         resolutionAction->setEnabled(false);
         screenSubMenu->addAction(resolutionAction);
 
-        // Añadir acción de prueba
-        QAction* dummyAction = new QAction("No Action Yet", screenSubMenu);
-        screenSubMenu->addAction(dummyAction);
+        int idScreen = screen.getId();
+        QAction* startStopAction = screenSubMenu->addAction("Start");
+        connect(startStopAction, &QAction::triggered, this, [this, &screen, screenController, startStopAction]() {
+            qDebug() << screen.getNameId();
+            if (screen.isCapturing) {
+                screenController->stopScreenCapture(screen.getId());
+                startStopAction->setText("Start");
+            }
+            else {
+                screenController->startScreenCapture(screen.getId());
+                startStopAction->setText("Stop");
+            }
+            });
 
+
+        // Añadir acción de prueba
+       
         addMenu(screenSubMenu); // Añadir el submenú al menú principal
     }
-
+    createRefreshAction(screenController);
     createQuitAction();
 }
 
 void TrayMenu::createQuitAction() {
     // Añadir la acción de salir
-    QAction* quitAction = new QAction("Salir", this);
+    QAction* quitAction = new QAction("Exit", this);
     connect(quitAction, &QAction::triggered, qApp, &QApplication::quit);
     addAction(quitAction);
+}
+
+void TrayMenu::createRefreshAction(ScreenController* screenController) {
+    QAction* refreshAction = new QAction("Refresh", this);
+    connect(refreshAction, &QAction::triggered, this, [this, screenController]() {
+        this->refreshMenu(screenController);  // Pasando el parámetro a refreshMenu
+        });
+    addAction(refreshAction);
+
+}
+
+void TrayMenu::refreshMenu(ScreenController* screenController) {
+    this->clear();  // Limpiar el menú antes de actualizar
+    screenController->stopAllCaptures(); // Detener todas las capturas activas
+    screenController->detectScreens();   // Redetectar pantallas
+    buildMenu(screenController);
+
 }
