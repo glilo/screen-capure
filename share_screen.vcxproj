@@ -66,11 +66,12 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)include\ffmpeg\;$(SolutionDir)include\ndi\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)deps\ffmpeg-7.1\include\;$(SolutionDir)deps\ndi\include\</AdditionalIncludeDirectories>
+      <CompileAsWinRT>false</CompileAsWinRT>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>$(SolutionDir)lib\ffmpeg\$(PlataformShortName)\;$(SolutionDir)lib\ndi\$(PlataformShortName)\</AdditionalLibraryDirectories>
-      <AdditionalDependencies>$(SolutionDir)lib\ffmpeg\avcodec.lib;$(SolutionDir)lib\ffmpeg\avdevice.lib;$(SolutionDir)lib\ffmpeg\avfilter.lib;$(SolutionDir)lib\ffmpeg\avformat.lib;$(SolutionDir)lib\ffmpeg\avutil.lib;$(SolutionDir)lib\ffmpeg\swresample.lib;$(SolutionDir)lib\ffmpeg\swscale.lib;$(SolutionDir)lib\ndi\Processing.NDI.Lib.UWP.x64.lib;$(SolutionDir)lib\ndi\Processing.NDI.Lib.x64.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)deps\ffmpeg-7.1\lib\$(PlataformShortName)\;$(SolutionDir)deps\ndi\lib\$(PlataformShortName)\</AdditionalLibraryDirectories>
+      <AdditionalDependencies>$(SolutionDir)deps\ffmpeg-7.1\lib\avcodec.lib;$(SolutionDir)deps\ffmpeg-7.1\lib\avdevice.lib;$(SolutionDir)deps\ffmpeg-7.1\lib\avfilter.lib;$(SolutionDir)deps\ffmpeg-7.1\lib\avformat.lib;$(SolutionDir)deps\ffmpeg-7.1\lib\avutil.lib;$(SolutionDir)deps\ffmpeg-7.1\lib\swresample.lib;$(SolutionDir)deps\ffmpeg-7.1\lib\swscale.lib;$(SolutionDir)deps\ndi\lib\x64\Processing.NDI.Lib.UWP.x64.lib;$(SolutionDir)deps\ndi\lib\x64\Processing.NDI.Lib.x64.lib;$(SolutionDir)deps\ndi\lib\x86\Processing.NDI.Lib.UWP.x86.lib;$(SolutionDir)deps\ndi\lib\x86\Processing.NDI.Lib.x86.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
@@ -104,6 +105,8 @@
   <ItemGroup>
     <ClCompile Include="src\app_controller.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\NDIController.cpp" />
+    <ClCompile Include="src\NDISource.cpp" />
     <ClCompile Include="src\Screen.cpp" />
     <ClCompile Include="src\screen_capture_thread.cpp" />
     <ClCompile Include="src\screen_controller.cpp" />
@@ -116,6 +119,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\app_controller.h" />
+    <ClInclude Include="src\NDIController.h" />
+    <ClInclude Include="src\NDISource.h" />
     <ClInclude Include="src\Screen.h" />
     <QtMoc Include="src\screen_capture_thread.h" />
     <ClInclude Include="src\screen_controller.h" />
